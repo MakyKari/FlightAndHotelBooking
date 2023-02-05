@@ -1,18 +1,14 @@
-public class Human {
+public abstract class Human {
     private String firstName;
-    private String surname;
+    private String secondName;
     private int age;
-    private static int idgen = 0;
     private int id;
-
-    public Human(){
-        id = idgen++;
-    }
-
-    public Human(String firstName, String surname){
-        this();
+    public Human(){}
+    public Human(int id, String firstName, String surname, int age, String telephoneNumber){
+        this.id = id;
         this.firstName = firstName;
-        this.surname = surname;
+        this.secondName = surname;
+        this.age = age;
     }
 
     public String getFirstName() {
@@ -23,12 +19,12 @@ public class Human {
         this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSecondName(String surname) {
+        this.secondName = surname;
     }
 
     public int getAge() {
