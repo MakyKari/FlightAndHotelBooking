@@ -17,8 +17,9 @@ public class Main {
 
             Client client = new Client();
 
+            System.out.println("I welcome you to the AITUTRAVEL website!\n We are pleased to provide you with the best service for finding cheap flights and hotels around the world!\n");
 
-            System.out.println("Hello, welcome back! Do you have account?" +
+            System.out.println("Do you have account?" +
                                 "\nPlease enter Yes or No");
             String answer = Global.scanner.next();
 
@@ -33,7 +34,14 @@ public class Main {
                 client = findClient(telephoneNumber, password);
             }
 
-            System.out.println("Nice to meet you " + client.getSecondName() + " " + client.getFirstName() + "!");
+            System.out.println("Nice to meet you " + client.getSecondName() + " " + client.getFirstName() + "!" + "\n");
+            System.out.println("You can see all our flights: \n");
+
+            displayFlights();
+
+            System.out.println("\nChoose any flight that you want\nPlease write departure point and destination");
+
+            displayFlights(Global.scanner.next(), Global.scanner.next());
         }
         catch (Exception e){
             System.out.println(e + "Connection Error!");
@@ -117,5 +125,41 @@ public class Main {
         }
 
         return client;
+    }
+    public static void displayFlights(){
+        String sql = "select * from airplanes";
+        try(Connection con = DriverManager.getConnection(Global.connectionUrl,"postgres","123456789");
+            PreparedStatement preparedStmt = con.prepareStatement(sql)){
+            ResultSet rs = preparedStmt.executeQuery();
+
+            while(rs.next()){
+                System.out.println(rs.getString("name") + " " + rs.getString("owner") + " " + rs.getString("departurepoint") + " --> " +
+                                    rs.getString("destination") + " " + rs.getTime("departuretime") + " " + rs.getTime("arrivaltime"));
+            }
+        }
+        catch (Exception e){
+            System.out.println(e + "Connection Error!");
+        }
+    }
+    public static void displayFlights(String departurePoint, String destination) {
+        String sql = "select name, owner, destination, departurepoint, departuretime, arrivaltime " +
+                "from airplanes " +
+                "where departurepoint = ? and destination = ?";
+
+        try (Connection con = DriverManager.getConnection(Global.connectionUrl, "postgres", "123456789");
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString(1, departurePoint);
+            preparedStmt.setString(2, destination);
+
+            ResultSet rs = preparedStmt.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(rs.getString("name") + " " + rs.getString("owner") + " " + rs.getString("departurepoint") + " --> " +
+                        rs.getString("destination") + " " + rs.getTime("departuretime") + " " + rs.getTime("arrivaltime"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "Connection Error!");
+        }
     }
 }

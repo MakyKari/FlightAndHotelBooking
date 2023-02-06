@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6a3845-1b73-41e9-aa22-ffa09a972675" name="Changes" comment="added DB and connected it">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="1a6a3845-1b73-41e9-aa22-ffa09a972675" name="Changes" comment="added function to add clients to DB">
+      <change afterPath="$PROJECT_DIR$/main/src/Airplane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Human.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/main/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/main/Human.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Human.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +50,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
@@ -77,7 +73,7 @@
       <workItem from="1675525311227" duration="2541000" />
       <workItem from="1675607674745" duration="4503000" />
       <workItem from="1675653844247" duration="3409000" />
-      <workItem from="1675668972887" duration="9716000" />
+      <workItem from="1675668972887" duration="19327000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1675525752378</created>
@@ -107,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675611184500</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added function to add clients to DB">
+      <created>1675678925830</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675678925831</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +121,7 @@
     <MESSAGE value="first" />
     <MESSAGE value="second" />
     <MESSAGE value="added DB and connected it" />
-    <option name="LAST_COMMIT_MESSAGE" value="added DB and connected it" />
+    <MESSAGE value="added function to add clients to DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="added function to add clients to DB" />
   </component>
 </project>
