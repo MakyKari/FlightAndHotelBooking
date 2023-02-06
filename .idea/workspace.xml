@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6a3845-1b73-41e9-aa22-ffa09a972675" name="Changes" comment="second">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FlightAndHotelBooking.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FlightAndHotelBooking.iml" afterDir="false" />
+    <list default="true" id="1a6a3845-1b73-41e9-aa22-ffa09a972675" name="Changes" comment="added DB and connected it">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Human.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Human.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Human.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +59,11 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -69,7 +75,9 @@
       <option name="presentableId" value="Default" />
       <updated>1675525310010</updated>
       <workItem from="1675525311227" duration="2541000" />
-      <workItem from="1675607674745" duration="3399000" />
+      <workItem from="1675607674745" duration="4503000" />
+      <workItem from="1675653844247" duration="3409000" />
+      <workItem from="1675668972887" duration="9716000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1675525752378</created>
@@ -92,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675526611850</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added DB and connected it">
+      <created>1675611184500</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675611184500</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +117,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first" />
     <MESSAGE value="second" />
-    <option name="LAST_COMMIT_MESSAGE" value="second" />
+    <MESSAGE value="added DB and connected it" />
+    <option name="LAST_COMMIT_MESSAGE" value="added DB and connected it" />
   </component>
 </project>

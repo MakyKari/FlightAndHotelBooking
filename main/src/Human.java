@@ -4,10 +4,10 @@ public abstract class Human {
     private int age;
     private int id;
     public Human(){}
-    public Human(int id, String firstName, String surname, int age, String telephoneNumber){
+    public Human(int id, String firstName, String secondName, int age){
         this.id = id;
         this.firstName = firstName;
-        this.secondName = surname;
+        this.secondName = secondName;
         this.age = age;
     }
 
@@ -33,5 +33,12 @@ public abstract class Human {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 }
