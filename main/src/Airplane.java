@@ -3,13 +3,13 @@ import java.sql.Time;
 public class Airplane {
     private String name;
     private String owner;
-    private String destination;
     private String departurePoint;
+    private String destination;
     private Time departureTime;
     private Time arrivalTime;
 
     public Airplane(){}
-    public Airplane(String name, String owner, String destination, String departurePoint, Time departureTime, Time arrivalTime) {
+    public Airplane(String name, String owner, String  departurePoint, String destination, Time departureTime, Time arrivalTime) {
         this.name = name;
         this.owner = owner;
         this.destination = destination;
@@ -64,5 +64,10 @@ public class Airplane {
 
     public void setArrivalTime(Time arrivalTime) {
         this.arrivalTime = arrivalTime;
+    }
+
+    @Override
+    public String toString() {
+        return name + " , who's owner is " + owner + "\nFrom " + departurePoint + " to " + destination + "\nAt " + departureTime + " to " + arrivalTime + "\n";
     }
 }
