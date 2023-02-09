@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6a3845-1b73-41e9-aa22-ffa09a972675" name="Changes" comment="1">
-      <change afterPath="$PROJECT_DIR$/main/src/Hotel.java" afterDir="false" />
+    <list default="true" id="1a6a3845-1b73-41e9-aa22-ffa09a972675" name="Changes" comment="WOW!!!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/Airplane.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Airplane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Main.class" afterDir="false" />
     </list>
@@ -79,7 +77,10 @@
       <workItem from="1675746487865" duration="2386000" />
       <workItem from="1675755965376" duration="4739000" />
       <workItem from="1675845098562" duration="5982000" />
-      <workItem from="1675851121883" duration="8079000" />
+      <workItem from="1675851121883" duration="8874000" />
+      <workItem from="1675913299060" duration="2207000" />
+      <workItem from="1675915985750" duration="24000" />
+      <workItem from="1675922307408" duration="2267000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1675525752378</created>
@@ -123,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675689336380</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="WOW!!!!">
+      <created>1675859452365</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675859452365</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +144,7 @@
     <MESSAGE value="added DB and connected it" />
     <MESSAGE value="added function to add clients to DB" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="WOW!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="WOW!!!!" />
   </component>
 </project>

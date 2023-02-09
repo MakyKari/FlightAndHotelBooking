@@ -27,7 +27,7 @@ public class Main {
             String answer = Global.scanner.next();
 
             if (answer.equals("NO") || answer.equals("nO") || answer.equals("No") || answer.equals("no")) {
-                System.out.println("Not a problem, let's create your account:" + "\n What is your first name?");
+                System.out.println("Not a problem, let's create your account:" + "\nWhat is your first name?");
                 addClient(client);
             } else if (answer.equals("YES") || answer.equals("yes") || answer.equals("Yes") || answer.equals("YeS")) {
                 System.out.println("Please write down your\nTelephone number and Password");
@@ -65,11 +65,11 @@ public class Main {
                                 "You booked flight: " + airplane.toString() + "\n"+
                                 "You booked hotel: " + hotel.toString() + "\n");
 
-            System.out.println("Are you sure, that you want to take this travel? Yes/No \n");
-            answer = Global.scanner.next();
             while(true) {
+                System.out.println("Are you sure, that you want to take this travel? Yes/No \n");
+                answer = Global.scanner.next();
                 if (answer.equalsIgnoreCase("yes")) {
-                    System.out.println(client.getSecondName() + " " + client.getSecondName() + " have a nice trip!\n");
+                    System.out.println(client.getSecondName() + " " + client.getFirstName() + " have a nice trip!\n");
                     break;
                 }
                 else if (answer.equalsIgnoreCase("no")) {
@@ -99,8 +99,6 @@ public class Main {
                         }
                     }
                 }
-                System.out.println("Are you sure, that you want to take this travel? Yes/No \n");
-                answer = Global.scanner.next();
             }
 
         } catch (Exception e) {
@@ -117,8 +115,6 @@ public class Main {
     }
 
     public static void addClient(Client client) {
-        Scanner scanner = new Scanner(System.in);
-
         String sql = " insert into clients (firstName, secondName, telephoneNumber, age, password)"
                 + " values (?, ?, ?, ?, ?)";
 
@@ -128,15 +124,15 @@ public class Main {
             String firstName, secondName, telephoneNumber, password;
             int age;
 
-            firstName = scanner.next();
+            firstName = Global.scanner.next();
             System.out.println("What is your second name?");
-            secondName = scanner.next();
+            secondName = Global.scanner.next();
             System.out.println("Please, share with us your telephone number");
-            telephoneNumber = scanner.next();
+            telephoneNumber = Global.scanner.next();
             System.out.println("What is your age?");
-            age = scanner.nextInt();
+            age = Global.scanner.nextInt();
             System.out.println("Set your password");
-            password = scanner.next();
+            password = Global.scanner.next();
 
             preparedStmt.setString(1, firstName);
             preparedStmt.setString(2, secondName);
@@ -259,7 +255,7 @@ public class Main {
             preparedStmt.setString(1, location);
             ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
-                System.out.println("City: " + rs.getString("name") + "\nLocation: " + rs.getString("location") + " ");
+                System.out.println("Hotel: " + rs.getString("name") + "\nLocation: " + rs.getString("location") + " ");
                 for (int i = 0; i < rs.getInt("starcount"); i++) {
                     System.out.print("★");
                 }
