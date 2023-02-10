@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6a3845-1b73-41e9-aa22-ffa09a972675" name="Changes" comment="WOW!!!!">
+    <list default="true" id="1a6a3845-1b73-41e9-aa22-ffa09a972675" name="Changes" comment="fixed some bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Main.class" afterDir="false" />
@@ -80,7 +80,9 @@
       <workItem from="1675851121883" duration="8874000" />
       <workItem from="1675913299060" duration="2207000" />
       <workItem from="1675915985750" duration="24000" />
-      <workItem from="1675922307408" duration="2267000" />
+      <workItem from="1675922307408" duration="2901000" />
+      <workItem from="1676013214947" duration="682000" />
+      <workItem from="1676014874938" duration="1539000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1675525752378</created>
@@ -131,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675859452365</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fixed some bugs">
+      <created>1675924841046</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675924841046</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +154,7 @@
     <MESSAGE value="added function to add clients to DB" />
     <MESSAGE value="1" />
     <MESSAGE value="WOW!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="WOW!!!!" />
+    <MESSAGE value="fixed some bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some bugs" />
   </component>
 </project>

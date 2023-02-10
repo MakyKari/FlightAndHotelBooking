@@ -163,6 +163,13 @@ public class Main {
             preparedStmt.setString(1, telephoneNumber);
             ResultSet rs = preparedStmt.executeQuery();
 
+            while(!rs.isBeforeFirst()){
+                System.out.println("Sorry, this telephone number doesn't exist :_(\nPlease try again, enter your telephone number and password\n");
+                preparedStmt.setString(1, Global.scanner.next());
+                password = Global.scanner.next();
+                rs = preparedStmt.executeQuery();
+            }
+
             while (rs.next()) {
                 while (!rs.getString("password").equals(password)) {
                     System.out.println("Wrong password! Please try again");
