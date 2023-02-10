@@ -1,3 +1,4 @@
+import javax.sound.midi.Soundbank;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -26,10 +27,15 @@ public class Main {
                     "\nPlease enter Yes or No");
             String answer = Global.scanner.next();
 
-            if (answer.equals("NO") || answer.equals("nO") || answer.equals("No") || answer.equals("no")) {
+            while(!(answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("yes"))){
+                System.out.println("Sorry, it is an unknown answer, please enter only (YES) or (NO)\n");
+                answer = Global.scanner.next();
+            }
+
+            if (answer.equalsIgnoreCase("no")) {
                 System.out.println("Not a problem, let's create your account:" + "\nWhat is your first name?");
                 addClient(client);
-            } else if (answer.equals("YES") || answer.equals("yes") || answer.equals("Yes") || answer.equals("YeS")) {
+            } else if (answer.equalsIgnoreCase("yes")) {
                 System.out.println("Please write down your\nTelephone number and Password");
                 String telephoneNumber = Global.scanner.next();
                 String password = Global.scanner.next();
@@ -117,7 +123,9 @@ public class Main {
     public static void addClient(Client client) {
         String sql = " insert into clients (firstName, secondName, telephoneNumber, age, password)"
                 + " values (?, ?, ?, ?, ?)";
-
+        String sql2 = "select id,firstname, secondname, telephonenumber, age, password "
+                + "from clients "
+                + "where telephonenumber = ?";
         try (Connection con = DriverManager.getConnection(Global.connectionUrl, "postgres", "123456789");
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
 
@@ -129,6 +137,35 @@ public class Main {
             secondName = Global.scanner.next();
             System.out.println("Please, share with us your telephone number");
             telephoneNumber = Global.scanner.next();
+
+
+            PreparedStatement preparedStatement2 = con.prepareStatement(sql2);
+            preparedStatement2.setString(1,telephoneNumber);
+            ResultSet rs = preparedStatement2.executeQuery();
+
+            if(rs.isBeforeFirst()){
+                System.out.println("Sorry, clients with this telephone number is already exist\nDo you want to sign in by this telephone number? Yes/ No \n");
+                String answer = Global.scanner.next();
+                while(!(answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("no"))){
+                    System.out.println("Sorry, it is an unknown answer, please enter only (YES) or (NO)\n");
+                    answer = Global.scanner.next();
+                }
+                if(answer.equalsIgnoreCase("no")){
+                    System.out.println("Soooo, enter new telephone number:)\n");
+                    telephoneNumber = Global.scanner.next();
+
+                    preparedStatement2 = con.prepareStatement(sql2);
+                    preparedStatement2.setString(1,telephoneNumber);
+                    rs = preparedStatement2.executeQuery();
+                }
+                else if(answer.equalsIgnoreCase("yes")){
+                    System.out.println("Please write down password to this telephone number\n");
+                    password = Global.scanner.next();
+                    client = findClient(telephoneNumber, password);
+                    return;
+                }
+            }
+
             System.out.println("What is your age?");
             age = Global.scanner.nextInt();
             System.out.println("Set your password");
@@ -215,6 +252,15 @@ public class Main {
 
             ResultSet rs = preparedStmt.executeQuery();
 
+            while (!rs.isBeforeFirst()){
+                System.out.println("Sorry, we don't have that flight :_(\nPlease enter new departure point and destination\n");
+                departurePoint = Global.scanner.next();
+                destination = Global.scanner.next();
+                preparedStmt.setString(1, departurePoint);
+                preparedStmt.setString(2, destination);
+                rs = preparedStmt.executeQuery();
+            }
+
             while (rs.next()) {
                 System.out.println(rs.getString("name") + " " + rs.getString("owner") + " " + rs.getString("departurepoint") + " --> " +
                         rs.getString("destination") + " " + rs.getTime("departuretime") + " " + rs.getTime("arrivaltime"));
@@ -235,12 +281,15 @@ public class Main {
             preparedStmt.setString(1, serialnumber);
 
             ResultSet rs = preparedStmt.executeQuery();
-            while (rs.next()) {
-                while (!rs.getString("name").equals(serialnumber)) {
-                    System.out.println("Sorry, you entered incorrect serial number, try again!\n");
-                    serialnumber = Global.scanner.next();
-                }
 
+            while (!rs.isBeforeFirst()){
+                System.out.println("Sorry, we don't have that flight :_(\nPlease enter new serial number\n");
+                serialnumber = Global.scanner.next();
+                preparedStmt.setString(1, serialnumber);
+                rs = preparedStmt.executeQuery();
+            }
+
+            while (rs.next()) {
                 return new Airplane(rs.getString("name"), rs.getString("owner"), rs.getString("departurepoint"),
                         rs.getString("destination"), rs.getTime("departuretime"), rs.getTime("arrivaltime"));
             }
@@ -286,12 +335,15 @@ public class Main {
             preparedStmt.setString(1, name);
 
             ResultSet rs = preparedStmt.executeQuery();
-            while (rs.next()) {
-                while (!rs.getString("name").equals(name)) {
-                    System.out.println("Sorry, you entered incorrect name, try again!\n");
-                    name = Global.scanner.next();
-                }
 
+            while (!rs.isBeforeFirst()){
+                System.out.println("Sorry, we don't have that hotel :_(\nPlease enter new hotel name\n");
+                name = Global.scanner.next();
+                preparedStmt.setString(1, name);
+                rs = preparedStmt.executeQuery();
+            }
+
+            while (rs.next()) {
                 return new Hotel(rs.getString("name"), rs.getString("location"), rs.getInt("starcount"),
                         rs.getBoolean("isbreakfastincluded"), rs.getString("optionalservices"));
             }
