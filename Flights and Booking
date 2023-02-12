@@ -1,0 +1,37 @@
+package com.company;
+
+import com.company.applications.MyApplication1;
+import com.company.applications.MyApplication2;
+import com.company.applications.MyApplication3;
+import com.company.controllers.ClientController;
+import com.company.controllers.FlightController;
+import com.company.controllers.HotelController;
+import com.company.data.interfaces.IDB;
+import com.company.data.PostgresDB;
+import com.company.repositories.ClientRepository;
+import com.company.repositories.FlightRepository;
+import com.company.repositories.HotelRepository;
+import com.company.repositories.interfaces.IClientRepository;
+import com.company.repositories.interfaces.IFlightRepository;
+import com.company.repositories.interfaces.IHotelRepository;
+
+
+public class Rmain {
+    public static void main(String[] args) {
+        IDB db = new PostgresDB();
+        IClientRepository repoClient = new ClientRepository(db);
+        ClientController clientController = new ClientController(repoClient);
+        MyApplication1 app1 = new MyApplication1(clientController);
+        app1.start();
+
+        IFlightRepository repoFlight = new FlightRepository(db);
+        FlightController flightController = new FlightController(repoFlight);
+        MyApplication2 app2 = new MyApplication2(flightController);
+        app2.start();
+
+        IHotelRepository repoHotel = new HotelRepository(db);
+        HotelController hotelController = new HotelController(repoHotel);
+        MyApplication3 app3 = new MyApplication3(hotelController);
+        app3.start();
+    }
+}
