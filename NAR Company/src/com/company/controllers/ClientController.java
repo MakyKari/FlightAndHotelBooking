@@ -11,9 +11,7 @@ public class ClientController {
     }
 
     public Client addClient(String firstName, String secondName, int age, String telephoneNumber, String password) {
-        Client client = new Client(firstName, secondName, age, telephoneNumber, password);
-        repo.addClient(client);
-        return client;
+        return repo.addClient(firstName, secondName, age, telephoneNumber, password);
     }
 
     public Client findClient(String telephoneNumber, String password) {

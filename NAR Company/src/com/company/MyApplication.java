@@ -31,9 +31,14 @@ public class MyApplication {
 
             Client client = new Client();
 
-            if (answer.equals("NO") || answer.equals("nO") || answer.equals("No") || answer.equals("no")) {
+            while(!(answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("yes"))){
+                System.out.println("Sorry, it is an unknown answer, please enter only (YES) or (NO)\n");
+                answer = scanner.next();
+            }
+
+            if (answer.equalsIgnoreCase("no")) {
                 client = addClient();
-            } else if (answer.equals("YES") || answer.equals("yes") || answer.equals("Yes") || answer.equals("YeS")) {
+            } else if (answer.equalsIgnoreCase("yes")) {
                 client = findClient();
             }
             System.out.println("Nice to meet you " + client.getSecondName() + " " + client.getFirstName() + "!" + "\n");

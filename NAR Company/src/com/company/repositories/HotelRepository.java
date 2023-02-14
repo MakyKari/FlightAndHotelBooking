@@ -55,12 +55,15 @@ public class HotelRepository implements IHotelRepository {
             preparedStmt.setString(1, name);
 
             ResultSet rs = preparedStmt.executeQuery();
-            while (rs.next()) {
-                while (!rs.getString("name").equals(name)) {
-                    System.out.println("Sorry, you entered incorrect name, try again!\n");
-                    name = scanner.next();
-                }
 
+            while (!rs.isBeforeFirst()){
+                System.out.println("Sorry, we don't have that hotel :_(\nPlease enter new hotel name\n");
+                name = scanner.next();
+                preparedStmt.setString(1, name);
+                rs = preparedStmt.executeQuery();
+            }
+
+            while (rs.next()) {
                 return new Hotel(rs.getString("name"), rs.getString("location"), rs.getInt("starcount"),
                         rs.getBoolean("isbreakfastincluded"), rs.getString("optionalservices"));
             }
