@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.controllers.ClientController;
-import com.company.controllers.FlightController;
-import com.company.controllers.HotelController;
-import com.company.controllers.TicketController;
+import com.company.controllers.*;
 import com.company.entities.Airplane;
 import com.company.entities.Client;
 import com.company.entities.Hotel;
@@ -18,13 +15,15 @@ public class MyApplication {
     private final FlightController flightController;
     private final HotelController hotelController;
     private final TicketController ticketController;
+    private final PilotController pilotController;
     private final Scanner scanner;
 
-    public MyApplication(ClientController clientController, FlightController flightController, HotelController hotelController, TicketController ticketController) {
+    public MyApplication(ClientController clientController, PilotController pilotController, FlightController flightController, HotelController hotelController, TicketController ticketController) {
         this.clientController = clientController;
         this.flightController = flightController;
         this.hotelController = hotelController;
         this.ticketController = ticketController;
+        this.pilotController = pilotController;
         scanner = new Scanner(System.in);
     }
 
@@ -36,12 +35,59 @@ public class MyApplication {
 
             Client client = new Client();
 
-            if (answer.equals("NO") || answer.equals("nO") || answer.equals("No") || answer.equals("no")) {
+            checkYesOrNo(answer);
+
+            if (answer.equalsIgnoreCase("no")) {
                 client = addClient();
                 System.out.println("Nice to meet you " + client.getSecondName() + " " + client.getFirstName() + "!" + "\n");
-            } else if (answer.equals("YES") || answer.equals("yes") || answer.equals("Yes") || answer.equals("YeS")) {
+            } else if (answer.equalsIgnoreCase("yes")) {
                 client = findClient();
                 System.out.println("Nice to meet you!");
+
+                if(client.isAdmin()){
+                    System.out.println(client.getSecondName() + " " + client.getFirstName() + "," + " have a good working day!");
+                    while(true) {
+                        System.out.println("Do you have new flights? ");
+                        answer = scanner.next();
+
+                        checkYesOrNo(answer);
+
+                        if (answer.equalsIgnoreCase("no")) {
+                            System.out.println("Ok, maybe you have new pilots?\n");
+                            answer = scanner.next();
+                            checkYesOrNo(answer);
+
+                            if (answer.equalsIgnoreCase("no")) {
+                                System.out.println("Maybe you want to leave?");
+                                answer = scanner.next();
+                                checkYesOrNo(answer);
+                                if (answer.equalsIgnoreCase("yes")) {
+                                    System.out.println("Have a nice evening!");
+                                    return;
+                                }
+                            }
+                            else if (answer.equalsIgnoreCase("yes")) {
+                                while(true) {
+                                    addPilot();
+                                    System.out.println("Pilot added!\nDo you want add another pilot?");
+                                    answer = scanner.next();
+                                    checkYesOrNo(answer);
+                                    if(answer.equalsIgnoreCase("no")) break;
+                                }
+                            }
+                        }
+                        else if (answer.equalsIgnoreCase("yes")) {
+                            while(true) {
+                                addFlight();
+                                System.out.println("Flight added!\nDo you want add another flight?");
+                                answer = scanner.next();
+                                checkYesOrNo(answer);
+                                if(answer.equalsIgnoreCase("no")) break;
+                            }
+                        }
+                    }
+                }
+
                 while(true) {
                     System.out.println("\n" + "1) Display/show me my tickets" + "\n" + "2) Please remove/cancel my tickets" + "\n" + "3) Purchase tickets for another flight" + "\n");
                     int respond = scanner.nextInt();
@@ -86,6 +132,7 @@ public class MyApplication {
             while(true) {
                 System.out.println("Are you sure, that you want to take this travel? Yes/No \n");
                 answer = scanner.next();
+                checkYesOrNo(answer);
                 if (answer.equalsIgnoreCase("yes")) {
                     addTicket(client.getFirstName(), client.getSecondName(), airplane.getAirplane(), airplane.getOwner(),
                             airplane.getDeparturePoint(), airplane.getDestination(), airplane.getDepartureTime(), airplane.getArrivalTime());
@@ -212,5 +259,46 @@ public class MyApplication {
 
     public void deleteTicket(String name, String surname, String airplane) {
         ticketController.deleteTicket(name, surname, airplane);
+    }
+
+    public void addFlight(){
+        System.out.println("What is serial number of airplane?\n");
+        String name = scanner.next();
+        System.out.println("Who is the owner?");
+        String owner = scanner.next();
+        System.out.println("What is departure point?");
+        String departurepoint = scanner.next();
+        System.out.println("What is destiantion point?");
+        String destiantionpoint = scanner.next();
+        System.out.println("What is departure time?");
+        Time departuretime = Time.valueOf(scanner.next());
+        System.out.println("What is arrival time?");
+        Time arrivaltime = Time.valueOf(scanner.next());
+
+        flightController.addFlight(name, owner, departurepoint, destiantionpoint, departuretime, arrivaltime);
+    }
+
+    public void addPilot(){
+        System.out.println("What is pilot's first name?");
+        String firstName = scanner.next();
+        System.out.println("What is pilot's second name?");
+        String secondName = scanner.next();
+        System.out.println("What is pilot's telephone number?");
+        String telephoneNumber = scanner.next();
+        System.out.println("What is pilot's age?");
+        int age = scanner.nextInt();
+        System.out.println("What is pilot's experience in years?");
+        int experience = scanner.nextInt();
+        System.out.println("Does pilot have any diseases? true/false");
+        boolean ill = scanner.nextBoolean();
+
+        pilotController.addPilot(firstName,secondName,age,telephoneNumber, experience, ill);
+    }
+    public String checkYesOrNo(String ans){
+        while(!(ans.equalsIgnoreCase("yes") || ans.equalsIgnoreCase("no"))){
+            System.out.println("Sorry, it is an unknown answer, please enter only (YES) or (NO)\n");
+            ans = scanner.next();
+        }
+        return ans;
     }
 }

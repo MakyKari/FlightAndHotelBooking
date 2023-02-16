@@ -20,7 +20,7 @@ public class TicketRepository implements ITicketRepository {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "insert into tickets (name, surname, airplane, owner, departurePoint, destination, departureTime, arrivalTime)"
+            String sql = "insert into tickets (name, surname, airplane, owner, departurepoint, destination, departuretime, arrivaltime)"
                     + " values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = con.prepareStatement(sql);
 

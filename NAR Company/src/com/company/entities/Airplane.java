@@ -3,7 +3,7 @@ package com.company.entities;
 import java.sql.Time;
 
 public class Airplane {
-    private String name;
+    private String airplane;
     private String owner;
     private String departurePoint;
     private String destination;
@@ -11,8 +11,8 @@ public class Airplane {
     private Time arrivalTime;
 
     public Airplane(){}
-    public Airplane(String name, String owner, String  departurePoint, String destination, Time departureTime, Time arrivalTime) {
-        setName(name);
+    public Airplane(String airplane, String owner, String  departurePoint, String destination, Time departureTime, Time arrivalTime) {
+        setAirplane(airplane);
         setOwner(owner);
         setDestination(destination);
         setDeparturePoint(departurePoint);
@@ -20,12 +20,12 @@ public class Airplane {
         setArrivalTime(arrivalTime);
     }
 
-    public String getName() {
-        return name;
+    public String getAirplane() {
+        return airplane;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAirplane(String name) {
+        this.airplane = name;
     }
 
     public String getOwner() {
@@ -70,6 +70,6 @@ public class Airplane {
 
     @Override
     public String toString() {
-        return name + ", who's owner is " + owner + ". From " + departurePoint + " to " + destination + ". At " + departureTime + " to " + arrivalTime;
+        return airplane + ", who's owner is " + owner + ". From " + departurePoint + " to " + destination + ". At " + departureTime + " to " + arrivalTime;
     }
 }

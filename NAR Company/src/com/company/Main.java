@@ -1,19 +1,10 @@
 package com.company;
 
-import com.company.controllers.ClientController;
-import com.company.controllers.FlightController;
-import com.company.controllers.HotelController;
-import com.company.controllers.PilotController;
+import com.company.controllers.*;
 import com.company.data.interfaces.IDB;
 import com.company.data.PostgresDB;
-import com.company.repositories.ClientRepository;
-import com.company.repositories.FlightRepository;
-import com.company.repositories.HotelRepository;
-import com.company.repositories.PilotRepository;
-import com.company.repositories.interfaces.IClientRepository;
-import com.company.repositories.interfaces.IFlightRepository;
-import com.company.repositories.interfaces.IHotelRepository;
-import com.company.repositories.interfaces.IPilotRepository;
+import com.company.repositories.*;
+import com.company.repositories.interfaces.*;
 
 
 public class Main {
@@ -27,7 +18,9 @@ public class Main {
         FlightController flightController = new FlightController(repoFlight);
         IHotelRepository repoHotel = new HotelRepository(db);
         HotelController hotelController = new HotelController(repoHotel);
-        MyApplication app = new MyApplication(clientController, pilotController, flightController, hotelController);
+        ITicketRepository repoTicket = new TicketRepository(db);
+        TicketController ticketController = new TicketController(repoTicket);
+        MyApplication app = new MyApplication(clientController, pilotController, flightController, hotelController, ticketController);
         app.start();
     }
 }
